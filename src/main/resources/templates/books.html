@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/book.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FBFAF5;
+        }
+
+        header {
+            background-color: #E27D60;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Santander Coders Book Store</h1>
+</header>
+
+
+<h3>Books list:</h3>
+
+<table border='1' style='border-collapse:collapse' width="1200px">
+    <tr>
+        <th>Internal Id</th>
+        <th>Title</th>
+        <th>Summary</th>
+        <th>Table of Contents</th>
+        <th>Price</th>
+        <th>Pages</th>
+        <th>International Standard Book Number (ISBN):</th>
+        <th>Publication Date:</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td text-align="center" th:text="${book.id}" width="100px"></td>
+        <td text-align="center" th:text="${book.title}" width="100px"></td>
+        <td text-align="center" th:text="${book.summary}" width="100px"></td>
+        <td text-align="center" th:text="${book.tableOfContents}" width="100px"></td>
+        <td text-align="center" th:text="${book.price}" width="100px"></td>
+        <td text-align="center" th:text="${book.pages}" width="100px"></td>
+        <td text-align="center" th:text="${book.isbn}" width="100px"></td>
+        <td text-align="center" th:text="${book.publicationDate}" width="100px"></td>
+        <td text-align="center">
+            <form method="post" th:action="@{./delete/{id}(id=${book.id})}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+
+    </tr>
+</table>
+
+<br/>
+<br/>
+
+<button><a href="add-book">Add new book</a></button>
+</body>
+</html>

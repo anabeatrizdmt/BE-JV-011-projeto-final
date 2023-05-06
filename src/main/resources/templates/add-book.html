@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/book.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FBFAF5;
+        }
+
+        header {
+            background-color: #E27D60;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            background-color: #E27D60;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #E8A87C;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                margin-right: 1rem;
+                flex-basis: 0;
+                flex-grow: 1;
+            }
+
+            .form-group:last-child {
+                margin-right: 0;
+            }
+
+            .form-group label {
+                margin-bottom: 0.25rem;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="number"],
+            .form-group input[type="date"] {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .form-group:first-child input[type="text"] {
+                margin-bottom: 1rem;
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Santander Coders Book Store</h1>
+</header>
+<div class="container">
+    <h2>Add a new book</h2>
+
+    <form th:action="@{books}" method="post">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="summary">Summary:</label>
+            <textarea id="summary" name="summary" required maxlength="500"></textarea>
+            <div id="summary-characters" class="characters-remaining">500 characters remaining</div>
+        </div>
+
+        <div class="form-group">
+            <label for="tableOfContents">Table of Contents:</label>
+            <textarea id="tableOfContents" name="tableOfContents" rows="3" cols="40"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" min="20" step="any" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pages">Pages:</label>
+            <input type="number" id="pages" name="pages" min="100" required>
+        </div>
+
+        <div class="form-group">
+            <label for="isbn">International Standard Book Number (ISBN):</label>
+            <input type="text" id="isbn" name="isbn" required>
+        </div>
+
+        <div class="form-group">
+            <label for="publicationDate">Publication Date:</label>
+            <input type="date" id="publicationDate" name="publicationDate" required>
+        </div>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <div id="success-message" class="success-message" style="display:none">
+        Book saved successfully!
+    </div>
+</div>
+
+<script>
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var isoDate = tomorrow.toISOString().split('T')[0];
+    document.getElementById("publicationDate").min = isoDate;
+</script>
+<script>
+    var summaryField = document.getElementById("summary");
+    var summaryCharacters = document.getElementById("summary-characters");
+
+    summaryField.addEventListener("input", function () {
+        var remaining = 500 - summaryField.value.length;
+        summaryCharacters.textContent = remaining + " characters remaining";
+    });
+</script>
+</body>
+</html>
