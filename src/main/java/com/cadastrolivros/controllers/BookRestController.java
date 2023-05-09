@@ -44,14 +44,34 @@ public class BookRestController {
         Book savedBook = bookService.save(book);
         return ResponseEntity.ok(savedBook);    }
 
-    @GetMapping("/listAll")
+    @GetMapping("/findAll")
     public List<Book> findAll() {
         return bookService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/findById/{id}")
     public Book findById(@PathVariable Long id) {
         return bookService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        bookService.deleteById(id);
+    }
+
+    @PostMapping("/edit/{id}")
+    public ResponseEntity<?> update(@RequestParam Long id, @RequestBody Book book) {
+
+        //todo: verificações dos campos
+
+        try {
+            bookService.save(book);
+        } catch (RuntimeException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+
+        return ResponseEntity.ok(book);
+
     }
 
 }

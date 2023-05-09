@@ -3,6 +3,7 @@ package com.cadastrolivros.controllers;
 import com.cadastrolivros.model.Book;
 import com.cadastrolivros.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,13 @@ public class BookController {
         List<Book> books = bookService.findAll();
         model.addAttribute("books", books);
         return "books";
+    }
+
+    @GetMapping("/findById/{id}")
+    public String getBookById(@PathVariable("id") Long id, Model model) {
+        Book book = bookService.findById(id);
+        model.addAttribute("book", book);
+        return "book";
     }
 
     @PostMapping("/books")
@@ -65,6 +73,11 @@ public class BookController {
         bookService.deleteById(id);
         return "redirect:/books/books";
     }
+
+//    @PostMapping("/edit/{id}")
+//    public ResponseEntity<?> update() {
+//        //todo
+//    }
 
     private String validateBookData(String title, String summary, String tableOfContents, BigDecimal price, Long pages, String isbn, LocalDate publicationDate) {
         if (title.isEmpty()) {
