@@ -3,10 +3,12 @@ package com.cadastrolivros.services;
 import com.cadastrolivros.model.Book;
 import com.cadastrolivros.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@ComponentScan
 @Service
 public class BookService {
 
