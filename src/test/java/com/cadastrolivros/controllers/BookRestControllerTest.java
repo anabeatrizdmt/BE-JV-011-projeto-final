@@ -235,7 +235,7 @@ class BookRestControllerTest {
     @Test
     void shouldFindAllBooks() throws Exception {
         List<Book> books = Arrays.asList(
-                new Book(1L, "Book 1", "Summary 1", null, BigDecimal.valueOf(10), 100L, "1234567890", LocalDate.of(2023,7,1)),
+                new Book(1L, "Book 1", "Summary 1", null, BigDecimal.valueOf(50), 100L, "1234567890", LocalDate.of(2023,7,1)),
                 new Book(2L, "Book 2", "Summary 2", null, BigDecimal.valueOf(20), 200L, "0987654321", LocalDate.of(2023,8,1))
         );
 
@@ -247,7 +247,7 @@ class BookRestControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value("Book 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].summary").value("Summary 1"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(10))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(50))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].pages").value(100))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].isbn").value("1234567890"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(2))
@@ -260,7 +260,7 @@ class BookRestControllerTest {
 
     @Test
     void shouldFindBookById() throws Exception{
-        Book book = new Book(1L, "Book 1", "Summary 1", null, BigDecimal.valueOf(10), 100L, "1234567890", LocalDate.of(2023,8,1));
+        Book book = new Book(1L, "Book 1", "Summary 1", null, BigDecimal.valueOf(50), 100L, "1234567890", LocalDate.of(2023,8,1));
 
         when(bookService.findById(1L)).thenReturn(book);
         mockMvc.perform(MockMvcRequestBuilders.get("/rest/book/findById/{id}", 1L))
@@ -269,7 +269,7 @@ class BookRestControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Book 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.summary").value("Summary 1"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(10))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(50))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.pages").value(100))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.isbn").value("1234567890"));
     }

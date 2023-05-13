@@ -31,10 +31,6 @@ public class BookIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-
     @Test
     @DisplayName("Should add a book")
     public void saveBook() throws Exception {
@@ -93,7 +89,7 @@ public class BookIntegrationTest {
                 .andExpect(jsonPath("$[0]").isNotEmpty())
                 .andExpect(jsonPath("$[0].id").value(1))
                 .andExpect(status().isOk());
-        
+
         mockMvc.perform(delete("/rest/book/{id}",1 ))
                 .andDo(print())
                 .andExpect(MockMvcResultMatchers.status().isNoContent());

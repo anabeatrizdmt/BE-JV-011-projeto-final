@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babe0420-1a93-4a9d-ba92-f8138f59eb08" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/BookIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/BookIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/BookIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookRestControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -76,49 +77,65 @@
       <recent name="com.cadastrolivros.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookIntegrationTest">
-    <configuration name="BookIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="BookControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.*" />
+          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.BookIntegrationTest" />
+      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookIntegrationTest.deleteBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.shouldAddBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.*" />
+          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.BookIntegrationTest" />
-      <option name="METHOD_NAME" value="deleteBook" />
+      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookControllerTest" />
+      <option name="METHOD_NAME" value="shouldAddBook" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookIntegrationTest.saveBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookControllerTest.shouldAddBookWithValidData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.*" />
+          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.BookIntegrationTest" />
-      <option name="METHOD_NAME" value="saveBook" />
+      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookControllerTest" />
+      <option name="METHOD_NAME" value="shouldAddBookWithValidData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookControllerTest.shouldNotAddBookWithInvalidData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BE-JV-011-projeto-final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookControllerTest" />
+      <option name="METHOD_NAME" value="shouldNotAddBookWithInvalidData" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,22 +156,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookRestControllerTest.shouldReturnBadRequestWhenPublicationDateIsMissingOrNotInTheFuture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BE-JV-011-projeto-final" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookRestControllerTest" />
-      <option name="METHOD_NAME" value="shouldReturnBadRequestWhenPublicationDateIsMissingOrNotInTheFuture" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BeJv011ProjetoFinalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.cadastrolivros.BeJv011ProjetoFinalApplication" />
@@ -164,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BookIntegrationTest" />
-        <item itemvalue="JUnit.BookIntegrationTest.saveBook" />
-        <item itemvalue="JUnit.BookIntegrationTest.deleteBook" />
+        <item itemvalue="JUnit.BookControllerTest" />
         <item itemvalue="JUnit.BookRestControllerTest" />
-        <item itemvalue="JUnit.BookRestControllerTest.shouldReturnBadRequestWhenPublicationDateIsMissingOrNotInTheFuture" />
+        <item itemvalue="JUnit.BookControllerTest.shouldAddBookWithValidData" />
+        <item itemvalue="JUnit.BookControllerTest.shouldNotAddBookWithInvalidData" />
+        <item itemvalue="JUnit.BookControllerTest.shouldAddBook" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +185,7 @@
       <workItem from="1683405872101" duration="1148000" />
       <workItem from="1683589232372" duration="1098000" />
       <workItem from="1683990375836" duration="7718000" />
-      <workItem from="1684001435841" duration="9643000" />
+      <workItem from="1684001435841" duration="12567000" />
     </task>
     <servers />
   </component>
@@ -196,7 +197,13 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$BookRestControllerTest.ic" NAME="BookRestControllerTest Coverage Results" MODIFIED="1684010344295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$BookIntegrationTest.ic" NAME="BookIntegrationTest Coverage Results" MODIFIED="1684011638521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.cadastrolivros.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$BookRestControllerTest.ic" NAME="BookRestControllerTest Coverage Results" MODIFIED="1684013915144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.cadastrolivros.controllers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$BookControllerTest.ic" NAME="BookControllerTest Coverage Results" MODIFIED="1684013891669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.cadastrolivros.controllers.*</FILTER>
     </SUITE>
   </component>
