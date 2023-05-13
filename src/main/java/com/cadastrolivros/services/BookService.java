@@ -9,8 +9,13 @@ import java.util.List;
 
 @Service
 public class BookService {
+
+    private final BookRepository bookRepository;
+
     @Autowired
-    private BookRepository bookRepository;
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public Book save(Book book) {
         return bookRepository.save(book);
@@ -30,10 +35,6 @@ public class BookService {
 
     public void deleteById(Long id) {
         bookRepository.deleteById(id);
-    }
-
-    public boolean existsById(Long id) {
-        return bookRepository.existsById(id);
     }
 
 }
