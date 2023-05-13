@@ -14,8 +14,12 @@ import java.util.List;
 @RequestMapping("/rest/book")
 public class BookRestController {
 
+    private final BookService bookService;
+
     @Autowired
-    private BookService bookService;
+    public BookRestController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @PostMapping("/add")
     public ResponseEntity<Object> save(@RequestBody Book book) {
@@ -42,7 +46,8 @@ public class BookRestController {
         }
 
         Book savedBook = bookService.save(book);
-        return ResponseEntity.ok(savedBook);    }
+        return ResponseEntity.ok(savedBook);
+    }
 
     @GetMapping("/findAll")
     public List<Book> findAll() {
@@ -50,28 +55,78 @@ public class BookRestController {
     }
 
     @GetMapping("/findById/{id}")
-    public Book findById(@PathVariable Long id) {
-        return bookService.findById(id);
+    public ResponseEntity<Book> findById(@PathVariable Long id) {
+        Book book = bookService.findById(id);
+        if (book != null) {
+            return ResponseEntity.ok(book);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id) {
+    public ResponseEntity<Object> deleteById(@PathVariable Long id) {
         bookService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/edit/{id}")
-    public ResponseEntity<?> update(@RequestParam Long id, @RequestBody Book book) {
+    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Book updatedBook) {
+        if (id == null) {
+            return ResponseEntity.badRequest().body("ID is mandatory");
+        }
 
-        //todo: verificações dos campos
+        Book existingBook = bookService.findById(id);
+        if (existingBook == null) {
+            return ResponseEntity.notFound().build();
+        }
 
         try {
-            bookService.save(book);
+            updateBook(existingBook, updatedBook);
+            Book savedBook = bookService.save(existingBook);
+            return ResponseEntity.ok(savedBook);
         } catch (RuntimeException e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
-
-        return ResponseEntity.ok(book);
-
     }
 
+    private void updateBook(Book existingBook, Book updatedBook) {
+        if (updatedBook.getTitle() != null) {
+            existingBook.setTitle(updatedBook.getTitle());
+        }
+        if (updatedBook.getSummary() != null) {
+            if (updatedBook.getSummary().length() <= 500) {
+                existingBook.setSummary(updatedBook.getSummary());
+            } else {
+                throw new IllegalArgumentException("The summary can't have more than 500 characters");
+            }
+        }
+        if (updatedBook.getTableOfContents() != null) {
+            existingBook.setTableOfContents(updatedBook.getTableOfContents());
+        }
+        if (updatedBook.getPrice() != null) {
+            if (updatedBook.getPrice().compareTo(BigDecimal.valueOf(20)) >= 0) {
+                existingBook.setPrice(updatedBook.getPrice());
+            } else {
+                throw new IllegalArgumentException("Price must be at least 20");
+            }
+        }
+        if (updatedBook.getPages() != null) {
+            if (updatedBook.getPages() >= 100) {
+                existingBook.setPages(updatedBook.getPages());
+            } else {
+                throw new IllegalArgumentException("Number of pages must be at least 100");
+            }
+        }
+        if (updatedBook.getIsbn() != null) {
+            existingBook.setIsbn(updatedBook.getIsbn());
+        }
+        if (updatedBook.getPublicationDate() != null) {
+            if (updatedBook.getPublicationDate().isAfter(LocalDate.now().plusDays(1))) {
+                existingBook.setPublicationDate(updatedBook.getPublicationDate());
+            } else {
+                throw new IllegalArgumentException("The date of publication needs to be in the future");
+            }
+        }
+    }
 }

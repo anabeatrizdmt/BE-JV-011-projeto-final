@@ -8,6 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/controllers/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/controllers/BookRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/controllers/BookRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/repositories/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/repositories/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cadastrolivros/services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/add-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/add-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookRestControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +57,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,6 +72,12 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.cadastrolivros.controllers" />
     </key>
   </component>
   <component name="RunManager">
@@ -87,6 +100,7 @@
       <workItem from="1683399381504" duration="5158000" />
       <workItem from="1683405872101" duration="1148000" />
       <workItem from="1683589232372" duration="1098000" />
+      <workItem from="1683990375836" duration="7718000" />
     </task>
     <servers />
   </component>

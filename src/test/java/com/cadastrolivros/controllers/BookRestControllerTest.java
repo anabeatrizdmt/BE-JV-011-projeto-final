@@ -17,4 +17,12 @@ class BookRestControllerTest {
     @Test
     void findById() {
     }
+
+    @Test
+    void deleteById() {
+    }
+
+    @Test
+    void update() {
+    }
 }

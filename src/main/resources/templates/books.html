@@ -35,8 +35,17 @@
     <h1>Santander Coders Book Store</h1>
 </header>
 
+<h2>Search by book id</h2>
+<form method="post" th:action="@{./books/search}">
+    <label>
+        <input type="text" name="id"/>
+    </label>
+    <button type="submit">Search</button>
+</form>
 
-<h3>Books list:</h3>
+<br/>
+
+<h3>Books list</h3>
 
 <table border='1' style='border-collapse:collapse' width="1200px">
     <tr>
@@ -59,7 +68,7 @@
         <td text-align="center" th:text="${book.isbn}" width="100px"></td>
         <td text-align="center" th:text="${book.publicationDate}" width="100px"></td>
         <td text-align="center">
-            <form method="post" th:action="@{./delete/{id}(id=${book.id})}">
+            <form method="post" th:action="@{./books/delete/{id}(id=${book.id})}">
                 <button type="submit">Delete</button>
             </form>
         </td>
@@ -70,6 +79,6 @@
 <br/>
 <br/>
 
-<button><a href="add-book">Add new book</a></button>
+<button><a href="books/add-book">Add new book</a></button>
 </body>
 </html>

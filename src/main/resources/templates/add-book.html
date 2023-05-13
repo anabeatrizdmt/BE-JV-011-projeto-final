@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Book Store</title>
@@ -150,17 +150,17 @@
 </div>
 
 <script>
-    var tomorrow = new Date();
+    const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    var isoDate = tomorrow.toISOString().split('T')[0];
+    const isoDate = tomorrow.toISOString().split('T')[0];
     document.getElementById("publicationDate").min = isoDate;
 </script>
 <script>
-    var summaryField = document.getElementById("summary");
-    var summaryCharacters = document.getElementById("summary-characters");
+    const summaryField = document.getElementById("summary");
+    const summaryCharacters = document.getElementById("summary-characters");
 
     summaryField.addEventListener("input", function () {
-        var remaining = 500 - summaryField.value.length;
+        const remaining = 500 - summaryField.value.length;
         summaryCharacters.textContent = remaining + " characters remaining";
     });
 </script>
