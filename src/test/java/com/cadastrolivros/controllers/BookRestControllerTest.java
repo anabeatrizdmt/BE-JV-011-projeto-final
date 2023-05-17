@@ -297,9 +297,34 @@ class BookRestControllerTest {
 
     @Test
     void shouldUpdateBookById() throws Exception {
+        Long bookId = 1L;
 
+        Book existingBook = new Book();
+        when(bookService.findById(bookId)).thenReturn(existingBook);
 
+        Book updatedBook = new Book();
+        updatedBook.setTitle("Updated Book");
+        updatedBook.setSummary("Updated summary");
+        updatedBook.setTableOfContents("Updated table of contents");
+        updatedBook.setPrice(BigDecimal.valueOf(40));
+        updatedBook.setPages(200L);
+        updatedBook.setIsbn("0987654321");
+        updatedBook.setPublicationDate(LocalDate.of(2023, 8, 1));
 
+        mockMvc.perform(MockMvcRequestBuilders.post("api/rest/book/edit/{id}",bookId) // problema na url
+                        .content(UPDATE_BOOK_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value(updatedBook.getTitle()))
+                .andExpect(jsonPath("$.summary").value(updatedBook.getSummary()))
+                .andExpect(jsonPath("$.tableOfContents").value(updatedBook.getTableOfContents()))
+                .andExpect(jsonPath("$.price").value(updatedBook.getPrice().doubleValue()))
+                .andExpect(jsonPath("$.pages").value(updatedBook.getPages()))
+                .andExpect(jsonPath("$.isbn").value(updatedBook.getIsbn()))
+                .andExpect(jsonPath("$.publicationDate").value(updatedBook.getPublicationDate().toString()));
 
-
-    }}
+        verify(bookService, times(1)).save(existingBook);
+    }
+}
