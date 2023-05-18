@@ -60,60 +60,6 @@ public class BookController {
         return "redirect:/books";
     }
 
-    @PostMapping("/edit/{id}")
-    public String updateBook(@PathVariable("id") Long id,
-                             @RequestParam("title") String title,
-                             @RequestParam("summary") String summary,
-                             @RequestParam("tableOfContents") String tableOfContents,
-                             @RequestParam("price") BigDecimal price,
-                             @RequestParam("pages") Long pages,
-                             @RequestParam("isbn") String isbn,
-                             @RequestParam("publicationDate") LocalDate publicationDate,
-                             Model model) {
-
-        Book existingBook = bookService.findById(id);
-        if (existingBook == null) {
-            return "error-page";
-        }
-
-        if (title != null) {
-            existingBook.setTitle(title);
-        }
-        if (summary != null && summary.length() <= 500) {
-            existingBook.setSummary(summary);
-        }
-        if (summary != null && summary.length() > 500) {
-            return "The summary can't have more than 500 characters";
-        }
-        if (tableOfContents != null) {
-            existingBook.setTableOfContents(tableOfContents);
-        }
-        if (price != null && price.compareTo(BigDecimal.valueOf(20)) >= 0) {
-            existingBook.setPrice(price);
-        }
-        if (price != null && price.compareTo(BigDecimal.valueOf(20)) < 0) {
-            return "Price must be at least 20";
-        }
-        if (pages != null && pages >= 100) {
-            existingBook.setPages(pages);
-        }
-        if (pages != null && pages < 100) {
-            return "Number of pages must be at least 100";
-        }
-        if (isbn != null) {
-            existingBook.setIsbn(isbn);
-        }
-        if (publicationDate != null && publicationDate.isAfter(LocalDate.now().plusDays(1))) {
-            existingBook.setPublicationDate(publicationDate);
-        }
-        if (publicationDate != null && !publicationDate.isAfter(LocalDate.now().plusDays(1))) {
-            return "The date of publication needs to be in the future";
-        }
-
-        bookService.save(existingBook);
-
-        return "redirect:/books";
-    }
 
     private String validateBookData(Book book) {
         if (book.getTitle().isEmpty()) {

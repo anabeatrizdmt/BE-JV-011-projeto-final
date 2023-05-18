@@ -2,6 +2,7 @@ package com.cadastrolivros.controllers;
 
 import com.cadastrolivros.model.Book;
 import com.cadastrolivros.services.BookService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -19,12 +20,14 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookRestController.class)
@@ -88,7 +91,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.id").value(cleanCode.getId()))
                 .andExpect(jsonPath("$.title").value(cleanCode.getTitle()))
@@ -111,7 +114,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").doesNotExist());
     }
 
@@ -124,7 +127,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("Title is mandatory"));
     }
 
@@ -139,7 +142,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("A summary is mandatory"));
     }
 
@@ -155,7 +158,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("The summary can't have more than 500 characters"));
     }
 
@@ -172,7 +175,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("Price must be at least 20"));
     }
 
@@ -190,7 +193,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("Number of pages must be at least 100"));
     }
 
@@ -208,7 +211,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("A International Standard Book Number(ISBN) is mandatory"));
     }
 
@@ -228,7 +231,7 @@ class BookRestControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("The date of publication needs to be in the future"));
     }
 
@@ -243,7 +246,7 @@ class BookRestControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/rest/book/findAll"))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value("Book 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].summary").value("Summary 1"))
@@ -265,7 +268,7 @@ class BookRestControllerTest {
         when(bookService.findById(1L)).thenReturn(book);
         mockMvc.perform(MockMvcRequestBuilders.get("/rest/book/findById/{id}", 1L))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Book 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.summary").value("Summary 1"))
@@ -281,20 +284,50 @@ class BookRestControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/rest/book/findById/{id}", bookId))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 
     @Test
     void shouldDeleteById() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.delete("/rest/book/{id}", 1L))
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
+                .andExpect(status().isNoContent());
 
         verify(bookService).deleteById(1L);
     }
 
     @Test
     void shouldUpdateBookById() throws Exception {
+        Long bookId = 1L;
+
+        Book existingBook = new Book();
+        when(bookService.findById(bookId)).thenReturn(existingBook);
+
+        Book updatedBook = new Book();
+        updatedBook.setTitle("Updated Book");
+        updatedBook.setSummary("Updated Summary");
+        updatedBook.setPrice(BigDecimal.valueOf(50.99));
+        updatedBook.setPages(300L);
+        updatedBook.setIsbn("9876543210");
+        updatedBook.setPublicationDate(LocalDate.of(2023, 9, 1));
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/edit/{id}",bookId) // problema na url
+                        .content(UPDATE_BOOK_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        verify(bookService, times(1)).save(existingBook);
+
+        Book updatedBookFromService = bookService.findById(bookId);
+        assertEquals(updatedBook.getTitle(), updatedBookFromService.getTitle());
+        assertEquals(updatedBook.getSummary(), updatedBookFromService.getSummary());
+        assertEquals(updatedBook.getTableOfContents(), updatedBookFromService.getTableOfContents());
+        assertEquals(updatedBook.getPrice(), updatedBookFromService.getPrice());
+        assertEquals(updatedBook.getPages(), updatedBookFromService.getPages());
+        assertEquals(updatedBook.getIsbn(), updatedBookFromService.getIsbn());
+        assertEquals(updatedBook.getPublicationDate(), updatedBookFromService.getPublicationDate());
 
     }
 }
