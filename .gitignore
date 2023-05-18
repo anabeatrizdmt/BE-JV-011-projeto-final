@@ -11,6 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.src/test/resources/chromedriver
 
 ### Eclipse ###
 .apt_generated
