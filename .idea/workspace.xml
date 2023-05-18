@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babe0420-1a93-4a9d-ba92-f8138f59eb08" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/SeleniumTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/chromedriver" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SeleniumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SeleniumTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "spring.configuration.checksum": "72c93347aadfa5fa4dd0811a4847f4fd",
     "vue.rearranger.settings.migration": "true"
@@ -82,48 +80,27 @@
       <recent name="com.cadastrolivros.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SeleniumTest.excluirLivro">
-    <configuration name="BookControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in BE-JV-011-projeto-final (1)">
+    <configuration name="All in BE-JV-011-projeto-final (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookControllerTest.shouldAddBookWithValidData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in BE-JV-011-projeto-final" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookControllerTest" />
-      <option name="METHOD_NAME" value="shouldAddBookWithValidData" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BookRestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SeleniumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookRestControllerTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SeleniumTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,11 +135,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in BE-JV-011-projeto-final (1)" />
+        <item itemvalue="JUnit.SeleniumTest" />
         <item itemvalue="JUnit.SeleniumTest.excluirLivro" />
         <item itemvalue="JUnit.SeleniumTest.adicionarLivro" />
-        <item itemvalue="JUnit.BookControllerTest" />
-        <item itemvalue="JUnit.BookRestControllerTest" />
-        <item itemvalue="JUnit.BookControllerTest.shouldAddBookWithValidData" />
+        <item itemvalue="JUnit.All in BE-JV-011-projeto-final" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +173,7 @@
     <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$BookRestControllerTest.ic" NAME="BookRestControllerTest Coverage Results" MODIFIED="1684013915144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.cadastrolivros.controllers.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$All_in_BE_JV_011_projeto_final.ic" NAME="All in BE-JV-011-projeto-final Coverage Results" MODIFIED="1684372513650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$BookControllerTest.ic" NAME="BookControllerTest Coverage Results" MODIFIED="1684364463319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.cadastrolivros.controllers.*</FILTER>
     </SUITE>
