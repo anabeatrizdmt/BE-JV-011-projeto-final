@@ -69,7 +69,7 @@
         <td text-align="center" th:text="${book.publicationDate}" width="100px"></td>
         <td text-align="center">
             <form method="post" th:action="@{./books/delete/{id}(id=${book.id})}">
-                <button type="submit">Delete</button>
+                <button type="submit" name = "delete-book">Delete</button>
             </form>
         </td>
 
@@ -79,6 +79,6 @@
 <br/>
 <br/>
 
-<button><a href="books/add-book">Add new book</a></button>
+<button name="add-book"><a href="books/add-book">Add new book</a></button>
 </body>
 </html>
