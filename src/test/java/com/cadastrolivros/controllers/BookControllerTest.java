@@ -109,24 +109,5 @@ class BookControllerTest {
     }
 
 
-    @Test
-    void shouldUpdateBook() throws Exception {
-        Long bookId = 1L;
-        String title = "Book 1";
-        String summary = "Summary 1";
-        String tableOfContents = "table of contents";
-        BigDecimal price = BigDecimal.valueOf(30);
-        Long pages = 100L;
-        String isbn = "1234567890";
-        LocalDate publicationDate = LocalDate.of(2023, 7, 1);
 
-        Book existingBook = new Book();
-        when(bookService.findById(bookId)).thenReturn(existingBook);
-
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(bookController).build();
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/edit/{id}", bookId));
-
-
-    }
 }

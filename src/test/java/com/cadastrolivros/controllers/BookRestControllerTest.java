@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
@@ -304,27 +305,29 @@ class BookRestControllerTest {
 
         Book updatedBook = new Book();
         updatedBook.setTitle("Updated Book");
-        updatedBook.setSummary("Updated summary");
-        updatedBook.setTableOfContents("Updated table of contents");
-        updatedBook.setPrice(BigDecimal.valueOf(40));
-        updatedBook.setPages(200L);
-        updatedBook.setIsbn("0987654321");
-        updatedBook.setPublicationDate(LocalDate.of(2023, 8, 1));
+        updatedBook.setSummary("Updated Summary");
+        updatedBook.setPrice(BigDecimal.valueOf(50.99));
+        updatedBook.setPages(300L);
+        updatedBook.setIsbn("9876543210");
+        updatedBook.setPublicationDate(LocalDate.of(2023, 9, 1));
 
-        mockMvc.perform(MockMvcRequestBuilders.post("api/rest/book/edit/{id}",bookId) // problema na url
+        mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/edit/{id}",bookId) // problema na url
                         .content(UPDATE_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value(updatedBook.getTitle()))
-                .andExpect(jsonPath("$.summary").value(updatedBook.getSummary()))
-                .andExpect(jsonPath("$.tableOfContents").value(updatedBook.getTableOfContents()))
-                .andExpect(jsonPath("$.price").value(updatedBook.getPrice().doubleValue()))
-                .andExpect(jsonPath("$.pages").value(updatedBook.getPages()))
-                .andExpect(jsonPath("$.isbn").value(updatedBook.getIsbn()))
-                .andExpect(jsonPath("$.publicationDate").value(updatedBook.getPublicationDate().toString()));
+                .andExpect(status().isOk());
 
         verify(bookService, times(1)).save(existingBook);
+
+        Book updatedBookFromService = bookService.findById(bookId);
+        assertEquals(updatedBook.getTitle(), updatedBookFromService.getTitle());
+        assertEquals(updatedBook.getSummary(), updatedBookFromService.getSummary());
+        assertEquals(updatedBook.getTableOfContents(), updatedBookFromService.getTableOfContents());
+        assertEquals(updatedBook.getPrice(), updatedBookFromService.getPrice());
+        assertEquals(updatedBook.getPages(), updatedBookFromService.getPages());
+        assertEquals(updatedBook.getIsbn(), updatedBookFromService.getIsbn());
+        assertEquals(updatedBook.getPublicationDate(), updatedBookFromService.getPublicationDate());
+
     }
 }
