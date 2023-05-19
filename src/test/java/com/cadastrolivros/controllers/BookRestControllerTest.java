@@ -3,6 +3,7 @@ package com.cadastrolivros.controllers;
 import com.cadastrolivros.model.Book;
 import com.cadastrolivros.services.BookService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -41,31 +42,7 @@ class BookRestControllerTest {
 
     private Book cleanCode;
 
-    private static final String BOOK_JSON = "{\n" +
-            "    \"title\": \"Clean Code: A Handbook of Agile Software Craftsmanship\",\n" +
-            "    \"summary\": \"Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship. Martin has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code 'on the fly' into a book that will instill within you the values of a software craftsman and make you a better programmer—but only if you work at it.\",\n" +
-            "    \"tableOfContents\": null,\n" +
-            "    \"price\": 202.71,\n" +
-            "    \"pages\": 431,\n" +
-            "    \"isbn\": \"978-0132350884\",\n" +
-            "    \"publicationDate\": \"2023-07-18\"\n" +
-            "}";
-
-    private static final String INVALID_BOOK_JSON = "{\n" +
-            "\t\"title\": \"Invalid\",\n" +
-            "\t\"summary\": null\n" +
-            "}";
-
-    private static final String UPDATE_BOOK_JSON = "{\n" +
-            "    \"id\": 1,\n" +
-            "    \"title\": \"Updated Book\",\n" +
-            "    \"summary\": \"Updated Summary\",\n" +
-            "    \"tableOfContents\": null,\n" +
-            "    \"price\": 50.99,\n" +
-            "    \"pages\": 300,\n" +
-            "    \"isbn\": \"9876543210\",\n" +
-            "    \"publicationDate\": \"2023-09-01\"\n" +
-            "}";
+    private ObjectMapper objectMapper;
 
     @BeforeEach
     void setUp() {
@@ -78,16 +55,17 @@ class BookRestControllerTest {
                 431L,
                 "978-0132350884",
                 LocalDate.of(2023,7,18));
+        objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
     }
 
     @Test
     void shouldSaveBookWithCorrectInformations() throws Exception {
-
+        String cleanCodeJson = objectMapper.writeValueAsString(cleanCode);
         doReturn(cleanCode).when(bookService).save(any());
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/rest/book/add")
-                        .content(BOOK_JSON)
+                        .content(cleanCodeJson)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -105,6 +83,10 @@ class BookRestControllerTest {
 
     @Test
     void shouldNotSaveBookWithMissingInformations() throws Exception {
+        String INVALID_BOOK_JSON = "{\n" +
+                "\t\"title\": \"Invalid\",\n" +
+                "\t\"summary\": null\n" +
+                "}";
 
         doReturn(cleanCode).when(bookService).save(any());
 
@@ -120,10 +102,10 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenTitleIsMissing() throws Exception {
-        String bookJson = "{}";
+        String INVALID_BOOK_JSON = "{}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -133,12 +115,12 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenSummaryIsMissing() throws Exception {
-        String bookJson = "{\n" +
+        String INVALID_BOOK_JSON = "{\n" +
                 "\t\"title\": \"title\"\n" +
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -148,13 +130,13 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenSummaryIsLongerThan500() throws Exception {
-        String bookJson = "{\n" +
+        String INVALID_BOOK_JSON = "{\n" +
                 "\t\"title\": \"title\",\n" +
                 "\t\"summary\": \"summarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummarysummary\"\n" +
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -164,14 +146,14 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenPriceIsEmptyOrLessThan20() throws Exception {
-        String bookJson = "{\n" +
+        String INVALID_BOOK_JSON = "{\n" +
                 "\t\"title\": \"title\",\n" +
                 "\t\"summary\": \"summary\",\n" +
                 "\t\"price\": 19\n" +
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -181,7 +163,7 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenPagesIsEmptyOrLessThan100() throws Exception {
-        String bookJson = "{\n" +
+        String INVALID_BOOK_JSON = "{\n" +
                 "\t\"title\": \"title\",\n" +
                 "\t\"summary\": \"summary\",\n" +
                 "\t\"price\": 40,\n" +
@@ -189,7 +171,7 @@ class BookRestControllerTest {
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -199,7 +181,7 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenIsbnIsMissing() throws Exception {
-        String bookJson = "{\n" +
+        String INVALID_BOOK_JSON = "{\n" +
                 "\t\"title\": \"title\",\n" +
                 "\t\"summary\": \"summary\",\n" +
                 "\t\"price\": 40,\n" +
@@ -207,7 +189,7 @@ class BookRestControllerTest {
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -217,7 +199,7 @@ class BookRestControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenPublicationDateIsMissingOrNotInTheFuture() throws Exception {
-        String bookJson = "{\n" +
+        String INVALID_BOOK_JSON = "{\n" +
                 "\t\"title\": \"title\",\n" +
                 "\t\"summary\": \"summary\",\n" +
                 "\t\"price\": 40,\n" +
@@ -227,7 +209,7 @@ class BookRestControllerTest {
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/add")
-                        .content(bookJson)
+                        .content(INVALID_BOOK_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -311,8 +293,10 @@ class BookRestControllerTest {
         updatedBook.setIsbn("9876543210");
         updatedBook.setPublicationDate(LocalDate.of(2023, 9, 1));
 
+        String updatedBookJson = objectMapper.writeValueAsString(updatedBook);
+
         mockMvc.perform(MockMvcRequestBuilders.post("/rest/book/edit/{id}",bookId) // problema na url
-                        .content(UPDATE_BOOK_JSON)
+                        .content(updatedBookJson)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="babe0420-1a93-4a9d-ba92-f8138f59eb08" name="Changes" comment="" />
+    <list default="true" id="babe0420-1a93-4a9d-ba92-f8138f59eb08" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookRestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/controllers/BookRestControllerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +83,7 @@
       <recent name="com.cadastrolivros.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in BE-JV-011-projeto-final (2)">
+  <component name="RunManager" selected="JUnit.All in BE-JV-011-projeto-final (3)">
     <configuration name="All in BE-JV-011-projeto-final (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <option name="PACKAGE_NAME" value="" />
@@ -97,26 +100,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in BE-JV-011-projeto-final" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in BE-JV-011-projeto-final (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BookRestControllerTest.shouldFindAllBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BE-JV-011-projeto-final" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookRestControllerTest" />
-      <option name="METHOD_NAME" value="shouldFindAllBooks" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,10 +136,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in BE-JV-011-projeto-final (3)" />
         <item itemvalue="JUnit.All in BE-JV-011-projeto-final (2)" />
         <item itemvalue="JUnit.All in BE-JV-011-projeto-final (1)" />
         <item itemvalue="JUnit.SeleniumTest" />
-        <item itemvalue="JUnit.SeleniumTest.excluirLivro" />
         <item itemvalue="JUnit.SeleniumTest.adicionarLivro" />
       </list>
     </recent_temporary>
@@ -197,5 +184,6 @@
       <FILTER>com.cadastrolivros.controllers.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$All_in_BE_JV_011_projeto_final__1_.ic" NAME="All in BE-JV-011-projeto-final (1) Coverage Results" MODIFIED="1684373497775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/BE_JV_011_projeto_final$All_in_BE_JV_011_projeto_final__3_.ic" NAME="All in BE-JV-011-projeto-final (3) Coverage Results" MODIFIED="1684539276970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
