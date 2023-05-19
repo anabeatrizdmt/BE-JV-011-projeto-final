@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="babe0420-1a93-4a9d-ba92-f8138f59eb08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/BookIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/cadastrolivros/BookIntegrationTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="babe0420-1a93-4a9d-ba92-f8138f59eb08" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +18,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
@@ -80,7 +80,7 @@
       <recent name="com.cadastrolivros.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookRestControllerTest.shouldFindAllBooks">
+  <component name="RunManager" selected="JUnit.All in BE-JV-011-projeto-final (2)">
     <configuration name="All in BE-JV-011-projeto-final (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <option name="PACKAGE_NAME" value="" />
@@ -149,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BookRestControllerTest.shouldFindAllBooks" />
         <item itemvalue="JUnit.All in BE-JV-011-projeto-final (2)" />
-        <item itemvalue="JUnit.All in BE-JV-011-projeto-final" />
         <item itemvalue="JUnit.All in BE-JV-011-projeto-final (1)" />
         <item itemvalue="JUnit.SeleniumTest" />
+        <item itemvalue="JUnit.SeleniumTest.excluirLivro" />
+        <item itemvalue="JUnit.SeleniumTest.adicionarLivro" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +170,10 @@
       <workItem from="1683589232372" duration="1098000" />
       <workItem from="1683990375836" duration="7718000" />
       <workItem from="1684001435841" duration="12567000" />
-      <workItem from="1684532966776" duration="1972000" />
+      <workItem from="1684416804085" duration="1007000" />
+      <workItem from="1684424578089" duration="2582000" />
+      <workItem from="1684502819791" duration="1028000" />
+      <workItem from="1684509598503" duration="1359000" />
     </task>
     <servers />
   </component>
