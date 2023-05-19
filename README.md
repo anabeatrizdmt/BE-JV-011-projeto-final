@@ -37,4 +37,33 @@ Implementar uma API básica(CRUD) com as camadas de Repository, Service e Contro
 - Criar uma interface simples para todos os endpoints da API e realizar testes de interface com Selenium.
 
 
+## Endpoints
+Os endpoints  a seguir foram tratados via API.
 
+### - Adição
+Endpoint: `POST /rest/book/add`
+
+Recebe um objeto com título, resumo, sumário, preço, páginas,isbn e data de publicação.
+
+### - Busca por todos os livros
+
+Endpoint: `GET /rest/book/findAll`
+
+Busca todos os livros cadastrados.
+
+### - Busca por id
+
+Endpoint: `GET /rest/book/findById/{id}`
+
+Busca os livros cadastrados a partir do id.
+
+### - Edita  por id
+
+Endpoint: `POSt /rest/book/edit/{id}`
+
+Edita o livro a partir do id.
+
+### - Exclusão
+Endpoint: `DELETE /rest/book/{id}`
+
+Deleta o cadastro de livro a partir do id.
