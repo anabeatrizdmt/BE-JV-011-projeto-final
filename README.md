@@ -59,7 +59,7 @@ Busca os livros cadastrados a partir do id.
 
 ### - Edita  por id
 
-Endpoint: `POSt /rest/book/edit/{id}`
+Endpoint: `POST /rest/book/edit/{id}`
 
 Edita o livro a partir do id.
 
