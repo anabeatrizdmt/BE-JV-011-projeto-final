@@ -97,6 +97,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in BE-JV-011-projeto-final" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BE-JV-011-projeto-final" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookRestControllerTest.shouldFindAllBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BE-JV-011-projeto-final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cadastrolivros.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cadastrolivros.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.cadastrolivros.controllers.BookRestControllerTest" />
+      <option name="METHOD_NAME" value="shouldFindAllBooks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SeleniumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BE-JV-011-projeto-final" />
       <option name="PACKAGE_NAME" value="" />
@@ -111,26 +135,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SeleniumTest" />
       <option name="METHOD_NAME" value="adicionarLivro" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SeleniumTest.adicionarLivro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BE-JV-011-projeto-final" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTest" />
-      <option name="METHOD_NAME" value="adicionarLivro" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SeleniumTest.excluirLivro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BE-JV-011-projeto-final" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SeleniumTest" />
-      <option name="METHOD_NAME" value="excluirLivro" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />

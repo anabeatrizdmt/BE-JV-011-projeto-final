@@ -63,7 +63,7 @@ public class BookIntegrationTest {
     }
 
     @Test
-    @DisplayName("Should add a book")
+    @DisplayName("Should delete a book")
     public void deleteBook() throws Exception {
 
         String BOOK_JSON = "{\n" +
